@@ -1,13 +1,10 @@
 ;; ----------------------------------------------------------------------
 ;; Emacs initialisation file
-;;
-;;
-;; 
 ;; 
 ;; ----------------------------------------------------------------------
 
 ;; load path
-(add-to-list 'load-path "~/.emacs.d/lisp/")
+ (add-to-list 'load-path "~/.emacs.d/lisp/")
 (let ((default-directory  "~/.emacs.d/lisp/"))
   (setq load-path
         (append
@@ -29,21 +26,6 @@
       (require 'edit-server)
       (setq edit-server-new-frame nil)
       (edit-server-start)))
-
-;; initialise packages in ~/.emacs.d/epla
-(require 'package) (package-initialize) 
-
-;; Appearance turn off toolbar
-(when (display-graphic-p)
-    (tool-bar-mode -1) ; turn off toolbar
-    ;; changing the default frame size at start up
-    (set-frame-height (selected-frame) 48)
-    (set-frame-width (selected-frame) 80)
-    (set-frame-position (selected-frame) 10 0)
-)
-
-;; enable visual feedback on selections
-(setq transient-mark-mode t)
 
 ;; check wich emacs we are running, and on which platform
 (cond
@@ -88,27 +70,6 @@
             (dired-directory dired-directory "%b")))
 
 
-;; windmove
-(when (fboundp 'windmove-default-keybindings)
-      (windmove-default-keybindings))
-
-; ------------------------------------------------------------
-; org mode
-
-;; the following lines are always needed.  choose your own keys.
-(add-to-list 'auto-mode-alist '("\\.org\\'" . org-mode))
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
-(global-set-key "\C-cb" 'org-iswitchb)
-
-;;(autoload 'org-mode "org" "org mode" t)
-;;(autoload 'orgstruct-mode "org" "org structure as a minor mode." t)
-
-(add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-(setq reftex-default-bibliography
-      (quote
-       ("/Users/mmthomas/SkyDrive/collection/bibliography.bib")))
-(setq org-src-fontify-natively t)
 ;; -----------------------------------------------------------------
 ;; key customisations
 
@@ -118,8 +79,6 @@
     (interactive)
     (call-interactively (key-binding "\M-\t"))))
 
-;; access to m-x compile
-(define-key global-map [f6] 'compile)
 
 (defun copy-line (&optional arg)
   "do a kill-line but copy rather than kill.  this function directly calls
@@ -133,28 +92,6 @@ buffer read-only, so i suggest setting kill-read-only-ok to t."
 
 (setq-default kill-read-only-ok t)
 (global-set-key "\C-c\C-k" 'copy-line)
-
-;; -----------------------------------------------------------------
-;; customisations
-(custom-set-faces
- '(default ((t 
-	     (:stipple nil 
-	      :background "white" 
-	      :foreground "black" 
-	      :inverse-video nil 
-	      :box nil 
-	      :strike-through nil 
-	      :overline nil 
-	      :underline nil 
-	      :slant normal 
-	      :weight normal 
-	      :height 140 
-	      :width normal 
-	      :family "courier new")
-	     ))
-    )
- )
- 
 
 (custom-set-variables
   ;; custom-set-variables was added by custom.
@@ -174,143 +111,16 @@ buffer read-only, so i suggest setting kill-read-only-ok to t."
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 
-;; prevent emacs from making backup files
- (setq make-backup-files nil) 
 
 ;; --------------------------------------------------------------------------
 ;; aspell  
 
 ;; replace ispell
-(setq-default ispell-program-name "aspell")
+
 
 ;; binding the ispell complete word
-(global-set-key "\C-c\C-v" 'ispell-complete-word)
-
-;; --------------------------------------------------------------------------
-;; auctex mode
-
-(require 'tex-site)
-(setq TeX-parse-self t)
-; (setq TeX-auto-save t)
-(setq-default TeX-master nil)
-
-;(load "tex-site")
-;(load "tex-mik")
-
-;(load "preview-latex.el" nil t t)
-;(setq preview-image-type 'pnm)
-
-;; --------------------------------------------------------------------------
-;; RefTeX mode 
-(autoload 'reftex-mode "reftex" "RefTeX Minor Mode" t)
-(autoload 'turn-on-reftex "reftex" "RefTeX Minor Mode" nil)
-(autoload 'reftex-citation "reftex-cite" "Make Citation" nil)
-(autoload 'reftex-index-phrase-mode "reftex-index" "Phrase Mode" t)
-
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex) ; with AUCTeX LaTeX mode
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-
-;; Custom key bindings
-(define-key global-map [f5] 'do-LaTeX) ; LaTeX
-;; (define-key global-map [f6] 'TeX-next-error) ; goto next found - LaTeX error
-(define-key global-map [f7] 'do-BiBTeX) ; BiBTeX
-(define-key global-map [f8] 'do-View) ; View the dvi file
-(define-key global-map [f9] 'do-dvi2ps) ; dvi2ps the file
-
-(defun do-LaTeX ()
-  "LaTeX the current master file"
-  (interactive)
-  (beginning-of-line)
-  (TeX-command "LaTeX" 'TeX-master-file)
-)
-
-(defun do-BiBTeX ()
-  "BibTeX the current master file"
-  (interactive)
-  (beginning-of-line)
-  (TeX-command "BibTeX" 'TeX-master-file)
-)
-
-(defun do-View ()
-  "View the current file"
-  (interactive)
-  (beginning-of-line)
-  (TeX-command "View" 'TeX-master-file)
-)
-
-(defun do-dvi2ps ()
-  "dvi2ps the current file"
-  (interactive)
-  (beginning-of-line)
-  (TeX-command "File" 'TeX-master-file)
-)
-
-;; --------------------------------------------------------------------------
-;; MATLAB mode 
-
-    (add-to-list 'load-path "~/matlab")
-
-    (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
-    (setq auto-mode-alist (cons '("\\.m\\'" . matlab-mode) auto-mode-alist))
-    (autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
 
 
-    (setq matlab-indent-function t); if you want function bodies indented
-    (setq matlab-verify-on-save-flag nil); turn off auto-verify on save
-    (defun my-matlab-mode-hook ()
-       (setq fill-column 76)
-       (imenu-add-to-menubar "Find")); where auto-fill should wrap
-     (add-hook 'matlab-mode-hook 'my-matlab-mode-hook)
-
-;; --------------------------------------------------------------------------
-;; --------------------------------------------------------------------------
-;; Python
-(require 'python-mode)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-;; iPython mode
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-(setq ipython-command "ipython-2.7")
-(require 'ipython)
-(setq py-python-command-args '("--pylab"  "--colors" "Linux"))
-
-;; Cython mode
-(require 'cython-mode)
-(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
-
-;; --------------------------------------------------------------------------
-;; --------------------------------------------------------------------------
-;; Yasnippet
-
-
-;;(add-to-list 'load-path "~/.emacs.d/elpa/yasnippet-0.8.0")
-;;(require 'yasnippet-bundle)
-;;(require 'yasnippet) ;; not yasnippet-bundle
-;(yas/initialize)
-;(yas/load-directory "~/.emacs.d/plugins/yasnippet/snippets")
-
-(yas-global-mode 1)
-
-;; --------------------------------------------------------------------------
-;; --------------------------------------------------------------------------
-;; Wikipedia mode
-
-(autoload 'wikipedia-mode "wikipedia-mode.el"
-"Major mode for editing documents in Wikipedia markup." t)
-
-(add-to-list 'auto-mode-alist
-'("\\.wiki\\'" . wikipedia-mode))
-
-; To load with view source from within firefox 3.x
-(add-to-list 'auto-mode-alist
-'("en\\.wikipedia\\.org" . wikipedia-mode))
-(add-to-list 'auto-mode-alist '("index.\\.*" . wikipedia-mode))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; word-count-region
