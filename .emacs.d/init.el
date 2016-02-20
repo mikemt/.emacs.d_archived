@@ -8,6 +8,7 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
+(setq visible-bell 1)
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
 ;; ---------------------------------------------------------------------- 
@@ -48,8 +49,8 @@
     (load-theme 'wombat t))
   )
 
-(add-to-list 'default-frame-alist '(font . "Courier New 12"))
-(set-face-attribute 'default t :font "Courier New 10")
+(add-to-list 'default-frame-alist '(font . "Monaco 11"))
+(set-face-attribute 'default t :font "Monaco 11")
 (custom-set-faces '(highlight-indentation-current-column-face ((t nil))))
 
 
