@@ -28,3 +28,9 @@
   (interactive)
   (let ((fill-column (point-max)))
         (fill-region (region-beginning) (region-end) nil)))
+
+
+(defun set-no-process-query-on-exit ()
+  (let ((proc (get-buffer-process (current-buffer))))
+    (when (processp proc)
+            (set-process-query-on-exit-flag proc nil))))

@@ -3,23 +3,29 @@
 ;; ----------------------------------------------------------------------
 (provide 'python_settings)
 
+;;(setenv
+ ;"PATH" (concat
+ ;        "$HOME/.bin:"
+  ;       "/usr/bin:"
+  ;       "/sbin:"
+  ;       "/usr/sbin:"
+  ;       "/usr/local/bin:"
+  ;       "/opt/local/bin:"
+  ;       "/usr/local/sbin"))
 
-(require 'python-mode)
+;;(setenv "PYTHONPATH" "/opt/usr/local/lib/python2.7/site-packages:")
 
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
+;; Elpy 
+(package-initialize)
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")   ;; backend from ropes to jedi
+;;(elpy-use-ipython)
+(custom-set-faces
+ '(highlight-indentation-current-column-face ((t nil))))
 
-;; iPython mode
-(autoload 'python-mode "python-mode" "Python Mode." t)
-(add-to-list 'auto-mode-alist '("\\.py\\'" . python-mode))
-(add-to-list 'interpreter-mode-alist '("python" . python-mode))
-
-(setq ipython-command "ipython-2.7")
-(require 'ipython)
-(setq py-python-command-args '("--pylab"  "--colors" "Linux"))
 
 ;; Cython mode
-(require 'cython-mode)
-(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
-(add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))
+;;(require 'cython-mode)
+;;(add-to-list 'auto-mode-alist '("\\.pyx\\'" . cython-mode))
+;;(add-to-list 'auto-mode-alist '("\\.pxd\\'" . cython-mode))
+;;(add-to-list 'auto-mode-alist '("\\.pxi\\'" . cython-mode))

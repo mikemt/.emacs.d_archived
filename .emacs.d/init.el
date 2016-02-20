@@ -8,6 +8,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+
 ;; ---------------------------------------------------------------------- 
 ;; Packages
 ;; ---------------------------------------------------------------------- 
@@ -23,7 +25,7 @@
 
 (require 'custom_functions)
 (require 'general-settings)
-(require 'yasnippet_settings)
+;;(require 'yasnippet_settings)
 (require 'orgmode_settings)
 (require 'python_settings)
 ;;(require 'auto-complete_settings)
@@ -37,21 +39,22 @@
 ;; Appearance customizations
 ;; ---------------------------------------------------------------------- 
 
-(if
-    (equal 0 (string-match "^24" emacs-version))
+(if (display-graphic-p)
+    (load-theme 'ample-zen t)
     ;;(require 'solarized-light-theme)
-  (require 'tangotango-theme)
+    ;;(require 'tangotango-theme)
+;;    (load-theme 'wombat t)
   (progn
-    (require 'color-theme)
-    (color-theme-initialize)
-    (require 'color-theme-solarized)
-    (color-theme-solarized-dark))
+    (load-theme 'wombat t))
   )
-(setq solarized-termcolors 256)
 
-;;(require 'faces)
-;;(if (system-is-darwin)
-;;(set-face-attribute 'default nil
- ;;                   :family "Inconsolata" :height 120 :weight 'normal);;    (set-face-attribute 'default nil
-;;)
+(add-to-list 'default-frame-alist '(font . "Courier New 12"))
+(set-face-attribute 'default t :font "Courier New 10")
+(custom-set-faces '(highlight-indentation-current-column-face ((t nil))))
+
+
+
+
+
+
 
