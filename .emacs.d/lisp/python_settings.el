@@ -11,5 +11,7 @@
 (setq jedi:complete-on-dot t)
 (setq jedi:get-in-function-call-delay 10000000)
 
+;; Cython mode
+(require 'cython-mode)
 
 

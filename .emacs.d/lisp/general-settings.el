@@ -3,17 +3,32 @@
 ;; ----------------------------------------------------------------------
 (provide 'general-settings)
 
+(if window-system
+    (add-to-list 'load-path "c:\\cygwin\bin"))
+
+;;(if (display-graphic-p)
+;;    (set-exec-path-from-shell-PATH))
+
+
 (setq inhibit-startup-screen 1)
 (size-indication-mode 1)         ;; auto text size
 (setq backup-inhibited t)        ;; no ~ backup pollution 
 (setq auto-save-default nil)     ;; no autosave
 (setq-default ispell-program-name "aspell")
+(setq frame-title-format '(buffer-file-name "%f"))
+(setq visible-bell 1)
+
+;; Behaviour
+(setq-default kill-read-only-ok t)
+(add-hook 'term-exec-hook 'set-no-process-query-on-exit)
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; don't show the tool bar
 (require 'tool-bar)
 (tool-bar-mode 0)
 ;; don't show the scroll bar
 (if window-system (scroll-bar-mode 0))
+;;(setq ns-pop-up-frames nil)
 
 ;; default window width and height
 (defun custom-set-frame-size ()
@@ -58,13 +73,16 @@
 ;; Add a new line when going to the next line
 (setq next-line-add-newlines t)
 
+(put 'downcase-region 'disabled nil)
+(put 'upcase-region 'disabled nil)
+
 ;; keybinds
-(defalias 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (define-key global-map [f5] 'goto-line)
 (define-key global-map [f6] 'compile)
 (define-key global-map "\C-c\C-k" 'copy-line)
+(global-set-key "\C-c\C-c" 'count-words-buffer)
 (global-set-key "\C-c\C-v" 'ispell-complete-word)
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <right>") 'windmove-right)
