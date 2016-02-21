@@ -8,6 +8,9 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
+(if (display-graphic-p)
+    (set-exec-path-from-shell-PATH))
+
 (setq visible-bell 1)
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
 
@@ -15,25 +18,23 @@
 ;; Packages
 ;; ---------------------------------------------------------------------- 
 
-(require 'ido)
-(ido-mode t)
-
 (require 'linum)
 
 ;; ---------------------------------------------------------------------- 
 ;; Settings
 ;; ---------------------------------------------------------------------- 
 
+(require 'ido-settings)
 (require 'custom_functions)
 (require 'general-settings)
-;;(require 'yasnippet_settings)
+(require 'yasnippet_settings)
+(require 'autocomplete_settings)
 (require 'orgmode_settings)
 (require 'python_settings)
-;;(require 'auto-complete_settings)
-
-
+;;(require 'c_settings)
 ;;(require 'tex_settings)
 ;;(require 'matlab_settings)
+
 (require 'wikipedia_settings)
 
 ;; ---------------------------------------------------------------------- 

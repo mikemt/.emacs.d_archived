@@ -50,15 +50,6 @@
 (setq-default truncate-lines 1)
 (setq truncate-partial-width-windows 1)
 
-
-;; Windmove
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-(global-set-key (kbd "C-c <left>")  'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>")    'windmove-up)
-(global-set-key (kbd "C-c <down>")  'windmove-down)
-
 ;; ignore case when searching
 (setq-default case-fold-search 1)
 
@@ -68,12 +59,18 @@
 (setq next-line-add-newlines t)
 
 ;; keybinds
+(defalias 'yes-or-no-p 'y-or-n-p)
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (define-key global-map [f5] 'goto-line)
 (define-key global-map [f6] 'compile)
 (define-key global-map "\C-c\C-k" 'copy-line)
 (global-set-key "\C-c\C-v" 'ispell-complete-word)
+(global-set-key (kbd "C-c <left>")  'windmove-left)
+(global-set-key (kbd "C-c <right>") 'windmove-right)
+(global-set-key (kbd "C-c <up>")    'windmove-up)
+(global-set-key (kbd "C-c <down>")  'windmove-down)
+
 (if (system-is-darwin)
         (setq ns-command-modifier 'meta))
 
