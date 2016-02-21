@@ -8,8 +8,8 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
-(if (display-graphic-p)
-    (set-exec-path-from-shell-PATH))
+;;(if (display-graphic-p)
+  ;;  (set-exec-path-from-shell-PATH))
 
 (setq visible-bell 1)
 (add-hook 'term-exec-hook 'set-no-process-query-on-exit)
