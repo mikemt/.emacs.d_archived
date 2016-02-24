@@ -28,7 +28,7 @@
 (tool-bar-mode 0)
 ;; don't show the scroll bar
 (if window-system (scroll-bar-mode 0))
-;;(setq ns-pop-up-frames nil)
+(setq ns-pop-up-frames nil)
 
 ;; default window width and height
 (defun custom-set-frame-size ()

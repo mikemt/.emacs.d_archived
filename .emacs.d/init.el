@@ -8,6 +8,10 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 (add-to-list 'load-path "~/.emacs.d/packages/")
 
+(require 'custom_functions)
+(require 'server)
+(server-start)
+
 ;; ---------------------------------------------------------------------- 
 ;; Packages
 ;; ---------------------------------------------------------------------- 
@@ -19,7 +23,6 @@
 ;; ---------------------------------------------------------------------- 
 
 (require 'ido-settings)
-(require 'custom_functions)
 (require 'general-settings)
 (require 'yasnippet_settings)
 (require 'autocomplete_settings)
