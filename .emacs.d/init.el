@@ -33,6 +33,7 @@
 ;;(require 'matlab_settings)
 
 (require 'wikipedia_settings)
+(require 'moses-mode)
 
 ;; ---------------------------------------------------------------------- 
 ;; Appearance customizations
