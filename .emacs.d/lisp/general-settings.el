@@ -4,7 +4,7 @@
 (provide 'general-settings)
 
 (if (system-is-windows)
-    (add-to-list 'load-path "c:\\cygwin\bin"))
+    (add-to-list 'load-path "c:\\cygwin64\bin"))
 
 ;;(if (display-graphic-p)
 ;;    (set-exec-path-from-shell-PATH))
