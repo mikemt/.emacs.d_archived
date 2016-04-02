@@ -10,7 +10,9 @@
 
 (require 'custom_functions)
 (require 'server)
-(server-start)
+
+(if (system-is-windows)
+    (server-start))
 
 ;; ---------------------------------------------------------------------- 
 ;; Packages
