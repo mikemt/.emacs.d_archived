@@ -9,6 +9,12 @@
 ;;(if (display-graphic-p)
 ;;    (set-exec-path-from-shell-PATH))
 
+;; Hunspell Settings
+(require 'ispell)
+(setenv "DICTIONARY" "en_GB")
+(setq ispell-program-name "hunspell")
+(setq ispell-personal-dictionary "~/.emacs.d/ispell/personal.en")
+
 
 (setq inhibit-startup-screen 1)
 (size-indication-mode 1)         ;; auto text size
