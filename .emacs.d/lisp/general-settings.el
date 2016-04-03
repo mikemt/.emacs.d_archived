@@ -21,7 +21,7 @@
 (setq backup-inhibited t)        ;; no ~ backup pollution 
 (setq auto-save-default nil)     ;; no autosave
 (setq frame-title-format '(buffer-file-name "%f"))
-(setq visible-bell 1)
+(setq ring-bell-function 'ignore)
 
 ;; Behaviour
 (setq-default kill-read-only-ok t)
@@ -50,7 +50,7 @@
 ;; Turn off blinking cursor
 (blink-cursor-mode 0)
 
-;; Coumn and line numbers
+;; Column and line numbers
 (line-number-mode 1)
 (column-number-mode 1)
 (global-linum-mode t)
