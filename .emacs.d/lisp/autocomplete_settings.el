@@ -8,3 +8,7 @@
 (setq ac-ignore-case nil)
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
+;;(setq tab-always-indent ‘complete)
+
+
+

@@ -31,29 +31,31 @@
 (require 'orgmode_settings)
 (require 'python_settings)
 ;;(require 'c_settings)
-;;(require 'tex_settings)
+(require 'tex_settings)
 ;;(require 'matlab_settings)
 
-(require 'wikipedia_settings)
-(require 'moses-mode)
+;;(require 'wikipedia_settings)
+;;(require 'moses-mode)
 
 ;; ---------------------------------------------------------------------- 
 ;; Appearance customizations
 ;; ---------------------------------------------------------------------- 
 
 (if (display-graphic-p)
+    ;;(load-theme 'alect-dark t)
+;;    (load-theme 'sanityinc-tomorrow-day t)
+;;    (load-theme 'sanityinc-tomorrow-night t)
+  ;; (load-theme 'zenburn t)
     (load-theme 'ample-zen t)
     ;;(require 'solarized-light-theme)
     ;;(require 'tangotango-theme)
-;;    (load-theme 'wombat t)
-  (progn
+    ;;(load-theme 'wombat t)
+(progn
     (load-theme 'wombat t))
-  )
+)
 
 (add-to-list 'default-frame-alist '(font . "Monaco 11"))
 (set-face-attribute 'default t :font "Monaco 11")
-(custom-set-faces '(highlight-indentation-current-column-face ((t nil))))
-
 
 
 

@@ -13,7 +13,27 @@
 ;;(autoload 'orgstruct-mode "org" "org structure as a minor mode." t)
 
 (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+(setq org-src-fontify-natively t)
+
 (setq reftex-default-bibliography
       (quote
        ("~/projects/bibliography.bib")))
-(setq org-src-fontify-natively t)
+
+
+;; Fixing windmove to work with orgmode
+(add-hook 'org-shiftup-final-hook 'windmove-up)
+(add-hook 'org-shiftleft-final-hook 'windmove-left)
+(add-hook 'org-shiftdown-final-hook 'windmove-down)
+(add-hook 'org-shiftright-final-hook 'windmove-right)
+
+;; yas TAB exapnd to work with orgmode
+(defun yas/org-very-safe-expand ()
+            (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
+
+(add-hook 'org-mode-hook
+          (lambda ()
+            (make-variable-buffer-local 'yas/trigger-key)
+            (setq yas/trigger-key [tab])
+            (add-to-list 'org-tab-first-hook 'yas/org-very-safe-expand)
+            (define-key yas/keymap [tab] 'yas/next-field)))
+

@@ -20,7 +20,6 @@
 (size-indication-mode 1)         ;; auto text size
 (setq backup-inhibited t)        ;; no ~ backup pollution 
 (setq auto-save-default nil)     ;; no autosave
-(setq-default ispell-program-name "aspell")
 (setq frame-title-format '(buffer-file-name "%f"))
 (setq visible-bell 1)
 
