@@ -15,12 +15,6 @@
     (server-start))
 
 ;; ---------------------------------------------------------------------- 
-;; Packages
-;; ---------------------------------------------------------------------- 
-
-(require 'linum)
-
-;; ---------------------------------------------------------------------- 
 ;; Settings
 ;; ---------------------------------------------------------------------- 
 
@@ -54,8 +48,9 @@
     (load-theme 'wombat t))
 )
 
-(add-to-list 'default-frame-alist '(font . "Monaco 11"))
-(set-face-attribute 'default t :font "Monaco 11")
+(if (system-is-darwin)
+    (add-to-list 'default-frame-alist '(font . "Monaco 11"))
+    (set-face-attribute 'default t :font "Monaco 11"))
 
 
 
