@@ -95,3 +95,16 @@ buffer read-only, so i suggest setting kill-read-only-ok to t."
   (interactive)
   (count-words-region (point-min) (point-max) )
   )
+
+
+(defun my-command-error-function (data context caller)
+  "Ignore the buffer-read-only, beginning-of-buffer,
+   end-of-buffer signals; pass the rest to the default handler."
+  (when (not (memq (car data) '(buffer-read-only
+                                beginning-of-buffer
+                                end-of-buffer)))
+    (command-error-default-function data context caller)))
+
+
+
+
