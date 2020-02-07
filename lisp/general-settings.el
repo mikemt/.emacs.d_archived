@@ -112,14 +112,13 @@
 
 ;;(put 'downcase-region 'disabled nil)
 ;;(put 'upcase-region 'disabled nil)
- 
+
 ;; keybinds
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "M-<down>") 'end-of-buffer)
-(define-key global-map [f5] 'goto-line)
-(define-key global-map [f6] 'compile)
+(global-set-key (kbd "<f5>") 'revert-buffer)
 (define-key global-map "\C-c\C-k" 'copy-line)
 (global-set-key "\C-c\C-c" 'count-words-buffer)
 (global-set-key "\C-c\C-v" 'ispell-complete-word)
