@@ -4,15 +4,15 @@
 (provide 'custom_functions)
 
 (defun system-is-linux ()
-  (interactive)
+  "Return true if GNU/Linux"
     (string-equal system-type "gnu/linux"))
 
 (defun system-is-darwin ()
-  (interactive)
+  "Return true if Mac OSX"
     (string-equal system-type "darwin"))
 
 (defun system-is-windows ()
-  (interactive)
+  "Return true if system is Windows-based"
     (string-equal system-type "windows-nt"))
 
 ;; unfill a paragraph, i.e., make it so the text does not wrap in the
@@ -68,33 +68,6 @@ buffer read-only, so i suggest setting kill-read-only-ok to t."
   (interactive)
   (shell-command (concat "~/.emacs.d/packages/texcount.pl "
                          (buffer-file-name))))
-
-
-(defun count-words-region (beginning end)
-  "Print number of words in the region."
-  (interactive "r")
-  (message "Counting words in region ... ")
-  (save-excursion
-    (let ((count 0))
-      (goto-char beginning)
-      (while (and (< (point) end)
-                  (re-search-forward "\\w+\\W*" end t))
-        (setq count (1+ count)))
-      (cond ((zerop count)
-             (message
-              "The region does NOT have any words."))
-            ((= 1 count)
-             (message
-              "The region has 1 word."))
-            (t
-             (message
-              "The region has %d words." count))))))
-
-(defun count-words-buffer ()
-  "Count all the words in the buffer"
-  (interactive)
-  (count-words-region (point-min) (point-max) )
-  )
 
 
 (defun my-command-error-function (data context caller)

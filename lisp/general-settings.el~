@@ -3,30 +3,33 @@
 ;; ----------------------------------------------------------------------
 (provide 'general-settings)
 
-(require 'which-key)
-(which-key-mode)
+(if (system-is-windows)
+    (cygwin-root "c:/cygwin64")
+    (cygwin-bin (concat cygwin-root "/bin"))
+    (setq exec-path (cons cygwin-bin exec-path)))
 
-(let* ((cygwin-root "c:/cygwin64")
-         (cygwin-bin (concat cygwin-root "/bin")))
-    (when (and (eq 'windows-nt system-type)
-  	     (file-readable-p cygwin-root))
-    
-      (setq exec-path (cons cygwin-bin exec-path))
-      (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
-    
-      ;; By default use the Windows HOME.
-      ;; Otherwise, uncomment below to set a HOME
-      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
-    
-      ;; NT-emacs assumes a Windows shell. Change to bash.
-      (setq shell-file-name "bash")
-      (setenv "SHELL" shell-file-name) 
-      (setq explicit-shell-file-name shell-file-name) 
-    
-      ;; This removes unsightly ^M characters that would otherwise
-      ;; appear in the output of java applications.
-      (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
 
+;;(let* ((cygwin-root "c:/cygwin64")
+;;         (cygwin-bin (concat cygwin-root "/bin")))
+;;    (when (and (eq 'windows-nt system-type)
+;;  	     (file-readable-p cygwin-root))
+;;    
+;;      (setq exec-path (cons cygwin-bin exec-path))
+;;      (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+;;    
+;;      ;; By default use the Windows HOME.
+;;      ;; Otherwise, uncomment below to set a HOME
+;;      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+;;    
+;;      ;; NT-emacs assumes a Windows shell. Change to bash.
+;;      (setq shell-file-name "bash")
+;;      (setenv "SHELL" shell-file-name) 
+;;      (setq explicit-shell-file-name shell-file-name) 
+;;    
+;;      ;; This removes unsightly ^M characters that would otherwise
+;;      ;; appear in the output of java applications.
+;;      (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
+;;
 
 
 ;;(if (system-is-windows)
@@ -52,7 +55,6 @@
 (setq auto-save-default nil)     ;; no autosave
 (setq frame-title-format '(buffer-file-name "%f"))
 (setq ring-bell-function 'ignore)
-
 
 ;; Behaviour
 (setq-default kill-read-only-ok t)
@@ -85,7 +87,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (global-linum-mode t)
-(setq column-number-indicator-zero-based nil) ;; set column numbers to start at 1
 
 ;; Trurn on transient mark mode
 (transient-mark-mode 1)
@@ -112,7 +113,7 @@
 
 ;;(put 'downcase-region 'disabled nil)
 ;;(put 'upcase-region 'disabled nil)
- 
+
 ;; keybinds
 (global-set-key (kbd "<end>") 'end-of-buffer)
 (global-set-key (kbd "<home>") 'beginning-of-buffer)

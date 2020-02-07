@@ -4,7 +4,13 @@
 (provide 'python_settings)
 
 (require 'jedi)
-(setq jedi-config:use-system-python t)
+(setq jedi:environment-root "jedi")
+(setq jedi:environment-virtualenv
+      (append python-environment-virtualenv
+              '("--python" "c:/ProgramData/Anaconda/python.exe")))
+
+
+;;(setq jedi-config:use-system-python t)
 (add-to-list 'ac-sources 'ac-source-jedi-direct)
 (add-hook 'python-mode-hook 'jedi:setup)
 

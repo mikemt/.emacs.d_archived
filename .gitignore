@@ -22,4 +22,7 @@
 ehthumbs.db
 Thumbs.db
 
-.emacs.d/elpa
+# directories
+# ----------------------------------------------------------------------
+elpa
+server
