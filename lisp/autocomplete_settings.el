@@ -10,5 +10,14 @@
 (ac-set-trigger-key "<tab>")
 ;;(setq tab-always-indent ‘complete)
 
+(defun my:ac-c-headers-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  (add-to-list 'achead:include-directories '"/opt/local/include"))
+
+(add-hook 'c++-mode-hook 'my:ac-c-headers-init)
+(add-hook 'c-mode 'my:ac-c-headers-init)
+
+
 
 
