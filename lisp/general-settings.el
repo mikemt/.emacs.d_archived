@@ -126,6 +126,7 @@
 (global-set-key (kbd "S-<right>") 'windmove-right)
 (global-set-key (kbd "S-<up>")    'windmove-up)
 (global-set-key (kbd "S-<down>")  'windmove-down)
+(define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 (if (system-is-darwin)
         (setq ns-command-modifier 'meta))
