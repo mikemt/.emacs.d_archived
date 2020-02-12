@@ -3,21 +3,26 @@
 ;; ----------------------------------------------------------------------
 (provide 'python_settings)
 
-(require 'jedi)
-(setq jedi:environment-root "jedi")
-(setq jedi:environment-virtualenv
+(use-package jedi
+  :ensure t
+  :config
+  (setq jedi:environment-root "jedi")
+  (setq jedi:environment-virtualenv
       (append python-environment-virtualenv
               '("--python" "c:/ProgramData/Anaconda/python.exe")))
+  (setq jedi:complete-on-dot t)
+  (setq jedi:get-in-function-call-delay 10000000)
+)
 
 
 ;;(setq jedi-config:use-system-python t)
 (add-to-list 'ac-sources 'ac-source-jedi-direct)
 (add-hook 'python-mode-hook 'jedi:setup)
 
-(setq jedi:complete-on-dot t)
-(setq jedi:get-in-function-call-delay 10000000)
+(use-package cython-mode
+  :ensure t)
 
-;; Cython mode
-(require 'cython-mode)
+(use-package ein
+  :ensure t)
 
 

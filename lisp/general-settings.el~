@@ -3,8 +3,8 @@
 ;; ----------------------------------------------------------------------
 (provide 'general-settings)
 
-(use-package which-key
-  :ensure t)
+(require 'which-key)
+(which-key-mode)
 
 (let* ((cygwin-root "c:/cygwin64")
          (cygwin-bin (concat cygwin-root "/bin")))

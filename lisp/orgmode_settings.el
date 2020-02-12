@@ -6,11 +6,13 @@
 
 (add-to-list 'auto-mode-alist '("\\.txt\\'" . org-mode))
 
-(require 'org-ref)
-(setq reftex-default-bibliography '("~/OneDrive/collection/mtmt.bib"))
-(setq org-ref-bibliography-notes "~/OneDrive/collection/notes.org"
-      org-ref-default-bibliography '("~/OneDrive/collection/mtmt.bib")
-      org-ref-pdf-directory "~/OneDrive/collection/a_citeulike/")
+(use-package org-ref
+  :ensure t
+  :config
+  (setq reftex-default-bibliography '("~/OneDrive/collection/mtmt.bib")
+        org-ref-bibliography-notes "~/OneDrive/collection/notes.org"
+        org-ref-default-bibliography '("~/OneDrive/collection/mtmt.bib")
+        org-ref-pdf-directory "~/OneDrive/collection/a_citeulike/"))
 
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
