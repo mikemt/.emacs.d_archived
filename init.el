@@ -34,7 +34,7 @@
 ))
 
 (use-package powerline
-;;  :disabled t
+  :disabled t
   :ensure t
   :config
   (powerline-default-theme)
