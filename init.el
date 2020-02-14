@@ -21,11 +21,31 @@
     (add-to-list 'load-path "/opt/local/bin/")
 )
 
+(if (display-graphic-p)
+    (use-package material-theme
+      :ensure t
+      :config
+      (load-theme 'material t))
+  (progn
+    (use-package wombat
+      :ensure t
+      :config
+      (load-theme 'wombat t))
+))
+
+(use-package powerline
+  :disabled t
+  :ensure t
+  :config
+  (powerline-default-theme)
+  )
+
+
 ;; ---------------------------------------------------------------------- 
 ;; Settings
 ;; ---------------------------------------------------------------------- 
 
-(require 'ido-settings)
+;;(require 'ido-settings)
 (require 'general-settings)
 (require 'yasnippet_settings)
 (require 'autocomplete_settings)
@@ -42,19 +62,6 @@
 ;; Appearance customizations
 ;; ---------------------------------------------------------------------- 
 
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-(if (display-graphic-p)
-    (use-package material-theme
-      :ensure t
-      :config
-      (load-theme 'material t))
-  (progn
-    (use-package wombat
-      :ensure t
-      :config
-      (load-theme 'wombat t))
-))
 
 (when (system-is-darwin)
    (add-to-list 'default-frame-alist '(font . "Monaco 11"))
@@ -67,23 +74,3 @@
 
 
 
-
-
-
-
-
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (tex-site auctex yasnippet which-key use-package org-ref material-theme jedi ido-vertical-mode ein cython-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
