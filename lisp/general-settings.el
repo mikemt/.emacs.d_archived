@@ -40,46 +40,9 @@
   :bind (("C-s" . swiper)
          ("C-r" . swiper)))
 
-
-(let* ((cygwin-root "c:/cygwin64")
-         (cygwin-bin (concat cygwin-root "/bin")))
-    (when (and (eq 'windows-nt system-type)
-  	     (file-readable-p cygwin-root))
-    
-      (setq exec-path (cons cygwin-bin exec-path))
-      (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
-    
-      ;; By default use the Windows HOME.
-      ;; Otherwise, uncomment below to set a HOME
-      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
-    
-      ;; NT-emacs assumes a Windows shell. Change to bash.
-      (setq shell-file-name "bash")
-      (setenv "SHELL" shell-file-name) 
-      (setq explicit-shell-file-name shell-file-name) 
-    
-      ;; This removes unsightly ^M characters that would otherwise
-      ;; appear in the output of java applications.
-      (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))
-
-
-
-;;(if (system-is-windows)
-;;    (add-to-list 'load-path "c:/cygwin64/bin"))
-
-;;(if (display-graphic-p)
-;;    (set-exec-path-from-shell-PATH))
-
-;; Hunspell Settings
 (require 'ispell)
-;;(setq ispell-local-dictionary-alist
-;;      '(("en_US" "C:/cygwin64/usr/share/myspell/en_US.dic")
-;;        ("en_GB" "C:/cygwin64/usr/share/myspell/en_GB.dic")))
-;;(setenv "DICTIONARY" "en_GB")
-;;(setq ispell-program-name "hunspell.exe")
-;;(setq-default ispell-program-name "c:/cygwin64/bin/hunspell.exe")
-;;(setq ispell-dictionary "en_GB")
-;;(setq ispell-personal-dictionary "~/.emacs.d/ispell/personal.en")
+(setq ispell-dictionary "en_GB")
+(setq ispell-personal-dictionary "~/.emacs.d/ispell/personal.en")
 
 (setq inhibit-startup-screen 1)
 (size-indication-mode 1)         ;; auto text size
@@ -102,12 +65,6 @@
 (setq ns-pop-up-frames nil)
 
 ;; default window width and height
-(defun custom-set-frame-size ()
-  (add-to-list 'default-frame-alist '(height . 55))
-  (add-to-list 'default-frame-alist '(width . 90))
-  (set-frame-position (selected-frame) 0 0))
-(custom-set-frame-size)
-(add-hook 'before-make-frame-hook 'custom-set-frame-size)
 
 ;; highlight parentheses
 (require 'paren)
@@ -165,4 +122,11 @@
 
 (if (system-is-darwin)
         (setq ns-command-modifier 'meta))
+
+
+
+
+
+
+
 
